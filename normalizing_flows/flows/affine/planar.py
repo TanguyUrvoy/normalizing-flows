@@ -9,6 +9,7 @@ class Planar(AmortizedTransform):
         # define nonlinearity function
         self.h = lambda x: tf.math.tanh(x)
         self.dh = lambda x: 1.0 - tf.square(tf.tanh(x))
+        self.use_residual = True # fix a problem
 
     def _alpha(self, u, w):
         wu = tf.matmul(w, u)
