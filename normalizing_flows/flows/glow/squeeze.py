@@ -61,7 +61,7 @@ class Squeeze(Transform):
     def _forward_shape(self, shape):
         assert self.input_shape is not None, 'not initialized'
         factor = self.factor
-        return tf.TensorShape((shape[0], np.ceil(shape[1] / factor), np.ceil(shape[2] / factor), shape[3]*factor*factor))
+        return tf.TensorShape((shape[0], np.ceil(shape[1] / factor).astype(int), np.ceil(shape[2] / factor).astype(int), shape[3]*factor*factor))
     
     def _inverse_shape(self, shape):
         assert self.input_shape is not None, 'not initialized'
